@@ -13,9 +13,21 @@ namespace RegisterAndLoginApp.Controllers
     {
         public IActionResult Index()
         {
-            HardCodedSampleDataRepository hardCodedSampleDataRepository = new HardCodedSampleDataRepository();
+            ProductsDAO products = new ProductsDAO();
 
-            return View(hardCodedSampleDataRepository.GetAllProduct());
+            return View(products.GetAllProduct());
+        }
+
+        public IActionResult SearchResults(string searchTerm)
+        {
+            ProductsDAO products = new ProductsDAO();
+            List<ProductModel> productList = products.SearchProducts(searchTerm);
+            return View("index", productList);
+        }
+
+        public IActionResult SearchForm()
+        {
+            return View();
         }
     }
 }

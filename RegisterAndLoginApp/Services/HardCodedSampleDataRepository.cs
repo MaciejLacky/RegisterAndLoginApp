@@ -50,7 +50,7 @@ namespace RegisterAndLoginApp.Services
             throw new NotImplementedException();
         }
 
-        public List<ProductModel> SearchProducts()
+        public List<ProductModel> SearchProducts(string x)
         {
             throw new NotImplementedException();
         }

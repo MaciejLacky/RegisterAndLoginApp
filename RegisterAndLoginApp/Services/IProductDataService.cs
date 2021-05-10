@@ -9,7 +9,7 @@ namespace RegisterAndLoginApp.Services
     interface IProductDataService
     {
         List<ProductModel> GetAllProduct();
-        List<ProductModel> SearchProducts();
+        List<ProductModel> SearchProducts(string searchTerm);
         ProductModel GetProductById(int Id);
         int Insert(ProductModel product);
         int Delete(ProductModel product);
