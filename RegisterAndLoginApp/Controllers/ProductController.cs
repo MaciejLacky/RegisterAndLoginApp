@@ -17,6 +17,11 @@ namespace RegisterAndLoginApp.Controllers
             ProductModel foundProduct = products.GetProductById(id);
             return View(foundProduct);
         }
+        public IActionResult ShowOneProductJSON(int id)
+        {
+            ProductsDAO products = new ProductsDAO();
+            return Json(products.GetProductById(id));
+        }
         public IActionResult Edit(int id)
         {
             ProductsDAO products = new ProductsDAO();
@@ -29,6 +34,12 @@ namespace RegisterAndLoginApp.Controllers
             ProductsDAO products = new ProductsDAO();
             products.Update(product);
             return View("Index", products.GetAllProduct());
+        }
+        public IActionResult ProcessEditReturnPartial(ProductModel product)
+        {
+            ProductsDAO products = new ProductsDAO();
+            products.Update(product);
+            return PartialView("_productView", product);
         }
         public IActionResult Index()
         {
