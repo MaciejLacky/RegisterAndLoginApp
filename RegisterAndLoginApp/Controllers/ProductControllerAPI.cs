@@ -21,12 +21,18 @@ namespace RegisterAndLoginApp.Controllers
             products.Update(product);
             return products.GetProductById(product.Id);
         }
+        //dto model
         [HttpGet]
-        public ActionResult <IEnumerable<ProductModel>> Index()
+        public ActionResult <IEnumerable<ProductModelDTO>> Index()
         {
             ProductsDAO products = new ProductsDAO();
-
-            return products.GetAllProduct();
+            List<ProductModel> productsList = products.GetAllProduct();
+            List<ProductModelDTO> productModelDTOs = new List<ProductModelDTO>();
+            foreach (var item in productsList)
+            {
+                productModelDTOs.Add(new ProductModelDTO(item));
+            }
+            return productModelDTOs;
         }
         [HttpGet("searchproducts/{searchTerm}")]
         public ActionResult <IEnumerable<ProductModel>> SearchResults(string searchTerm)
@@ -35,11 +41,14 @@ namespace RegisterAndLoginApp.Controllers
             List<ProductModel> productList = products.SearchProducts(searchTerm);
             return  productList;
         }
+        //dto model
         [HttpGet("ShowOneProduct/{Id}")]
-        public ActionResult <ProductModel> ShowOneProduct(int id)
+        public ActionResult <ProductModelDTO> ShowOneProduct(int id)
         {
+           
             ProductsDAO products = new ProductsDAO();
-            return products.GetProductById(id);
+            ProductModelDTO pdto = new ProductModelDTO(products.GetProductById(id));
+            return pdto ;
         }
         [HttpPost("insertOne")]
         public ActionResult <int> ProcessInsert(ProductModel product)
