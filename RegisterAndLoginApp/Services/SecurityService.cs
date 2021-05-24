@@ -8,6 +8,22 @@ namespace RegisterAndLoginApp.Services
 {
     public class SecurityService
     {
-        List<UserModel> knownUsers = new List<UserModel>();
+        public List<UserModel> users = new List<UserModel> { new UserModel {Id = 1, Password = "bigbucks", UserName = "BillGates" } };
+
+        public bool IsValid(UserModel user)
+        {
+            foreach (var item in users)
+            {
+                if (user.Password == item.Password & user.UserName == item.UserName)
+                {
+                    return true;
+                } 
+            }
+
+            return false;
+         
+        }
+        
+        
     }
 }
