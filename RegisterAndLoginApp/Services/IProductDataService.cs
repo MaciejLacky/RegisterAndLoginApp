@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RegisterAndLoginApp.Services
 {
-    interface IProductDataService
+    public interface IProductDataService
     {
         List<ProductModel> GetAllProduct();
         List<ProductModel> SearchProducts(string searchTerm);
