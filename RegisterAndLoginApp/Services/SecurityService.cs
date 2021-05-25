@@ -8,7 +8,7 @@ namespace RegisterAndLoginApp.Services
 {
     public class SecurityService
     {
-        public List<UserModel> users = new List<UserModel> { new UserModel {Id = 1, Password = "bigbucks", UserName = "BillGates" } };
+        public List<UserModel> users = new List<UserModel> { new UserModel {Id = 1, Password = "admin", UserName = "admin" } };
 
         public bool IsValid(UserModel user)
         {

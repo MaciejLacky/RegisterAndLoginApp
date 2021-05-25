@@ -23,6 +23,7 @@ namespace RegisterAndLoginApp.Controllers
         }
         //dto model
         [HttpGet]
+        [CustomAuthorization]
         public ActionResult <IEnumerable<ProductModelDTO>> Index()
         {
             ProductsDAO products = new ProductsDAO();

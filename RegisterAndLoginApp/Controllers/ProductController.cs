@@ -41,20 +41,21 @@ namespace RegisterAndLoginApp.Controllers
             products.Update(product);
             return PartialView("_productView", product);
         }
+        [CustomAuthorization]
         public IActionResult Index()
         {
             ProductsDAO products = new ProductsDAO();
 
             return View(products.GetAllProduct());
         }
-
+       
         public IActionResult SearchResults(string searchTerm)
         {
             ProductsDAO products = new ProductsDAO();
             List<ProductModel> productList = products.SearchProducts(searchTerm);
             return View("index", productList);
         }
-
+        [CustomAuthorization]
         public IActionResult SearchForm()
         {
             return View();
